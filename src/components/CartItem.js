@@ -33,10 +33,10 @@ class CartItem extends React.Component {
           </div>
           <div className="cart-price-tally">
             <span className="price-tag">
-              {product.price}
+              {`$${product.price}`}
             </span>
             <span className="price-total">
-              {`Total: ${product.price}`}
+              {`Total: $${parseFloat(product.quantity * product.price).toFixed(2)}`}
             </span>
           </div>
         </div>

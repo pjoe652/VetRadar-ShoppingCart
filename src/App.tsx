@@ -3,10 +3,12 @@ import './App.css';
 import { products } from './constants/index'
 import PurchaseItem from './components/PurchaseItem';
 import CartItem from './components/CartItem';
+import Summary from './components/Summary';
 
 class App extends React.Component<any, any> {
   state = {
-    shoppingCart: []
+    shoppingCart: [],
+    shipping: 5
   }
 
   addToCart = (newItem: any, image: any, price: any) => {
@@ -41,7 +43,7 @@ class App extends React.Component<any, any> {
       
       if(item && item.name === updatedItem) {
         if (updatedValue) {
-          item.quantity = updatedValue
+          item.quantity = parseInt(updatedValue)
         } else if (change === "add") {
           item.quantity++
         } else if (change === "subtract" && item.quantity !== 1) {
@@ -69,8 +71,14 @@ class App extends React.Component<any, any> {
     })
   }
 
+  updateShipping = (shippingCost: any) => {
+    this.setState({
+      shipping: shippingCost
+    })
+  }
+
   render() {
-    const { shoppingCart } = this.state
+    const { shoppingCart, shipping } = this.state
 
     let totalPrice = 0
     let totalQuantity = 0
@@ -82,6 +90,9 @@ class App extends React.Component<any, any> {
 
     return (
       <div className="App">
+        <span className="purchase-row-header">
+          Catalogue
+        </span>
         <div className="purchase-row-container">
           {
             products.map(product => {
@@ -109,9 +120,7 @@ class App extends React.Component<any, any> {
               })
             }
           </div>
-          <div className="summary-container">
-            Test 2
-          </div>
+          <Summary totalPrice={totalPrice} totalQuantity={totalQuantity} shippingCost={shoppingCart.length <= 0 ? 0 : shipping} updateShipping={this.updateShipping}/>
         </div>
       </div>
     );

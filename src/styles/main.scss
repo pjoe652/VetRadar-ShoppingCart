@@ -1,13 +1,20 @@
 @import 'components/PurchaseItem.scss';
 @import 'components/CartItem.scss';
+@import 'components/Summary.scss';
 
 body {
   font-family: Raleway;
   background-color: #f9f9f9;
 
+  .purchase-row-header {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
   .purchase-row-container {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin: 1rem;
   }
 
@@ -21,8 +28,16 @@ body {
       flex-direction: column;
       min-height: 20rem;
       width: 100%;
-      background-color: white;
-      border: solid 1px #d1d1d1;
+      margin: 1rem;
+
+      .current-cart-header {
+        display: flex;
+        flex-direction: row;
+        margin: 1.25rem;
+        font-size: 2rem;
+        font-weight: bold;
+        justify-content: space-between;
+      }
     }
   }
 }

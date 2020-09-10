@@ -38,6 +38,7 @@
     border: solid 1px white;
     padding: 0.75rem 0;
     transition: 0.3s all;
+    user-select: none;
 
     &:hover {
       color: #f64e5a;

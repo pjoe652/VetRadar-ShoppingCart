@@ -1,0 +1,101 @@
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  width: 50%;
+  height: auto;
+
+  .summary-header {
+    display: flex;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 1rem 1.5rem 1rem;
+  }
+
+  .cart-summary-container {
+    background-color: white;
+    border: solid 1px rgb(209, 209, 209);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .value-field-container {
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+
+      .initial-cost {
+        padding-bottom: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .summary-header {
+          font-size: 2rem;
+          font-weight: bold;
+          padding-bottom: 1rem;
+          border-bottom: solid 1px rgb(209, 209, 209);
+        }
+    
+        .summary-field {
+          padding-top: 1rem;
+          font-size: 1.25rem;
+          font-weight: bold;
+        }
+      }
+
+      .shipping-container {
+        display: flex;
+        flex-direction: column;
+
+        .shipping-header {
+          font-size: 1.25rem;
+          font-weight: bold;
+          padding-bottom: 1rem;
+        }
+
+        select {
+          height: 2rem;
+        }
+      }
+    }
+  }
+
+  .confirmation-container {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .total-cost {
+      border-top: solid 1px rgb(209, 209, 209);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: 1.25rem;
+      font-weight: bold;
+      padding: 1rem 0 2rem;
+    }
+
+    .checkout-button {
+      cursor: pointer;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background-color: #f64e5a;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      border-radius: 1rem;
+      text-align: center;
+      border: solid 1px white;
+      transition: all 0.3s;
+      user-select: none;
+  
+      &:hover {
+        background-color: white;
+        color: #f64e5a;
+        border: solid 1px #f64e5a;
+      }
+    }
+  }
+}
