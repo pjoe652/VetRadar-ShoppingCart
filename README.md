@@ -1,6 +1,13 @@
 # Unicorn Vet Group Front End Template 🦄🚀
 
-< add documentation here >
+## How to run
+
+- Install the necessary packages with `npm install`
+- Start the project with `npm run start`
+- To add items to the cart, click the "Add to Cart" button under the item you want
+- To update the quantity of an item, you can either click the plus or minus buttons for the item you want to change or change the value in the input field.
+  - The user cannot input a negative number or letters into the field
+- To remove an item, click the "X" beside the item name
 
 ---
 

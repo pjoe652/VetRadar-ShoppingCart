@@ -42,7 +42,7 @@ class App extends React.Component<any, any> {
     updatedShoppingCart.forEach((item:any) => {
       
       if(item && item.name === updatedItem) {
-        if (updatedValue) {
+        if (updatedValue && updatedValue > 0) {
           item.quantity = parseInt(updatedValue)
         } else if (change === "add") {
           item.quantity++
