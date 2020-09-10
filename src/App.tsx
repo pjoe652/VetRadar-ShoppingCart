@@ -2,13 +2,14 @@ import React from 'react';
 import './App.css';
 import { products } from './constants/index'
 import PurchaseItem from './components/PurchaseItem';
+import CartItem from './components/CartItem';
 
 class App extends React.Component<any, any> {
   state = {
     shoppingCart: []
   }
 
-  addToCart = (newItem: any) => {
+  addToCart = (newItem: any, image: any) => {
     const { shoppingCart } = this.state
 
     let updatedShoppingCart : any = [...shoppingCart]
@@ -23,8 +24,28 @@ class App extends React.Component<any, any> {
     })
 
     if (!itemFound) {
-      updatedShoppingCart.push({name: newItem, quantity: 1})
+      updatedShoppingCart.push({name: newItem, image: image, quantity: 1})
     }
+
+    this.setState({
+      shoppingCart: updatedShoppingCart
+    })
+  }
+
+  updateItem = (updatedItem: any, value: any) => {
+    const { shoppingCart } = this.state
+
+    let updatedShoppingCart : any = [...shoppingCart]
+
+    updatedShoppingCart.forEach((item:any) => {
+      if(item && item.name === updatedItem) {
+        if(value > 0) {
+          item.quantity++
+        } else {
+          item.quantity--
+        }
+      }
+    })
 
     this.setState({
       shoppingCart: updatedShoppingCart
@@ -47,7 +68,13 @@ class App extends React.Component<any, any> {
         </div>
         <div className="shopping-cart-container">
           <div className="current-cart-container">
-            Test 1
+            {
+              shoppingCart.map(product => {
+                return(
+                  <CartItem product={product} updateItem={this.updateItem}/>
+                )
+              })
+            }
           </div>
           <div className="summary-container">
             Test 2

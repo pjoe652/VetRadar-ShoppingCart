@@ -9,11 +9,11 @@ class PurchaseItem extends React.Component {
         <span className="item-header">
           {product.name}
         </span>
-        <img className="item-image" src={product.image}/>
+        <img className="item-image" src={product.image} alt=""/>
         <span className="item-price">
           {`$${parseFloat(product.price).toFixed(2)}`}
         </span>
-        <div className="add-to-cart" onClick={() => addToCart(product.name)}>
+        <div className="add-to-cart" onClick={() => addToCart(product.name, product.image)}>
           Add to Cart
         </div>
       </div>
