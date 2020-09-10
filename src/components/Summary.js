@@ -22,10 +22,10 @@ class Summary extends React.Component {
             <div className="shipping-container">
               <div className="initial-cost">
                 <span className="summary-field">
-                  {`${totalQuantity} items`}
+                  Shipping
                 </span>
                 <span className="summary-field">
-                  {`$${parseFloat(totalPrice).toFixed(2)}`}
+                  {`$${parseFloat(shippingCost).toFixed(2)}`}
                 </span>
               </div>
               <select name="shipping" onChange={(e) => updateShipping(e.target.value)}>
