@@ -13,7 +13,7 @@ class PurchaseItem extends React.Component {
         <span className="item-price">
           {`$${parseFloat(product.price).toFixed(2)}`}
         </span>
-        <div className="add-to-cart" onClick={() => addToCart(product.name, product.image)}>
+        <div className="add-to-cart" onClick={() => addToCart(product.name, product.image, product.price)}>
           Add to Cart
         </div>
       </div>

@@ -9,7 +9,7 @@ class App extends React.Component<any, any> {
     shoppingCart: []
   }
 
-  addToCart = (newItem: any, image: any) => {
+  addToCart = (newItem: any, image: any, price: any) => {
     const { shoppingCart } = this.state
 
     let updatedShoppingCart : any = [...shoppingCart]
@@ -24,7 +24,7 @@ class App extends React.Component<any, any> {
     })
 
     if (!itemFound) {
-      updatedShoppingCart.push({name: newItem, image: image, quantity: 1})
+      updatedShoppingCart.push({name: newItem, image: image, quantity: 1, price: price})
     }
 
     this.setState({
@@ -32,16 +32,19 @@ class App extends React.Component<any, any> {
     })
   }
 
-  updateItem = (updatedItem: any, value: any) => {
+  updateItem = (updatedItem: any, change: any, updatedValue: any) => {
     const { shoppingCart } = this.state
 
     let updatedShoppingCart : any = [...shoppingCart]
 
     updatedShoppingCart.forEach((item:any) => {
+      
       if(item && item.name === updatedItem) {
-        if(value > 0) {
+        if (updatedValue) {
+          item.quantity = updatedValue
+        } else if (change === "add") {
           item.quantity++
-        } else {
+        } else if (change === "subtract" && item.quantity !== 1) {
           item.quantity--
         }
       }
@@ -52,8 +55,30 @@ class App extends React.Component<any, any> {
     })
   }
 
+  removeItem = (removedItem: any) => {
+    const { shoppingCart } = this.state
+
+    let updatedShoppingCart : any = [...shoppingCart]
+
+    updatedShoppingCart = updatedShoppingCart.filter((item:any) => item.name !== removedItem)
+
+    console.log(updatedShoppingCart)
+
+    this.setState({
+      shoppingCart: updatedShoppingCart
+    })
+  }
+
   render() {
     const { shoppingCart } = this.state
+
+    let totalPrice = 0
+    let totalQuantity = 0
+
+    shoppingCart.forEach((item:any) => {
+      totalPrice += item.quantity * item.price
+      totalQuantity += item.quantity
+    })
 
     return (
       <div className="App">
@@ -68,10 +93,18 @@ class App extends React.Component<any, any> {
         </div>
         <div className="shopping-cart-container">
           <div className="current-cart-container">
+            <div className="current-cart-header">
+              <span>
+                Shopping Cart
+              </span>
+              <span>
+                {`${totalQuantity} items`}
+              </span>
+            </div>
             {
               shoppingCart.map(product => {
                 return(
-                  <CartItem product={product} updateItem={this.updateItem}/>
+                  <CartItem product={product} updateItem={this.updateItem} removeItem={this.removeItem}/>
                 )
               })
             }
