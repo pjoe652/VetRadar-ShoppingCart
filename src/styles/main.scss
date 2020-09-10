@@ -1,0 +1,12 @@
+@import 'components/PurchaseItem.scss';
+
+body {
+  font-family: Raleway;
+  background-color: #f9f9f9;
+
+  .purchase-row-container {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+  }
+}
