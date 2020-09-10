@@ -2,7 +2,7 @@ import React from 'react'
 
 class PurchaseItem extends React.Component {
   render() {
-    const { product } = this.props
+    const { product, addToCart } = this.props
 
     return(
       <div className="purchase-container">
@@ -13,7 +13,7 @@ class PurchaseItem extends React.Component {
         <span className="item-price">
           {`$${parseFloat(product.price).toFixed(2)}`}
         </span>
-        <div className="add-to-cart">
+        <div className="add-to-cart" onClick={() => addToCart(product.name)}>
           Add to Cart
         </div>
       </div>
